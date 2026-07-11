@@ -28,7 +28,7 @@ export default function Header() {
         </div>
 
         {isAuthenticated ? (
-          <div className="relative">
+          <div>
             <button
               onClick={() => setShowMenu(!showMenu)}
               className="flex items-center  px-3 py-1.5 rounded-full hover:bg-gray-50 transition-colors"
