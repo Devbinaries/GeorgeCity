@@ -48,6 +48,7 @@ class FarmProduct(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES)
     description = models.TextField(blank=True)
+    photo = models.ImageField(upload_to='products/', blank=True, null=True)
 
     def __str__(self):
         return self.product

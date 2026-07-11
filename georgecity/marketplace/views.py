@@ -162,6 +162,13 @@ class PostsViewSet(ModelViewSet,PermissionRequiredMixin):
     filter_backends = [SearchFilter]
     search_fields = ['post', 'author__username']
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        author_username = self.request.query_params.get('author')
+        if author_username:
+            queryset = queryset.filter(author__username=author_username)
+        return queryset
+
 class PostEngagementViewSet(ModelViewSet):
     model = PostEngagement
     serializer_class = PostsEngagementSerializer
@@ -177,11 +184,26 @@ class ChatViewSet(ModelViewSet):
 
     def get_queryset(self):
         queryset = super().get_queryset().order_by('id')
+        sender_username = self.request.query_params.get('sender')
         peer_username = self.request.query_params.get('peer')
-        if peer_username:
+
+        # Filter to messages involving a specific user as sender or receiver
+        if sender_username:
+            queryset = queryset.filter(
+                Q(sender__username=sender_username) | Q(receiver__username=sender_username)
+            )
+
+        # Further filter to a specific conversation between sender and peer
+        if peer_username and sender_username:
+            queryset = queryset.filter(
+                Q(sender__username=sender_username, receiver__username=peer_username) |
+                Q(sender__username=peer_username, receiver__username=sender_username)
+            )
+        elif peer_username:
             queryset = queryset.filter(
                 Q(sender__username=peer_username) | Q(receiver__username=peer_username)
             )
+
         return queryset
 
 

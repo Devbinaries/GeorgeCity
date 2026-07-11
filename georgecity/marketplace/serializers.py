@@ -13,7 +13,7 @@ class FarmSerializer(HyperlinkedModelSerializer):
 class FarmProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = FarmProduct
-        fields = ['id', 'product', 'quntity', 'in_stock', 'farmer', 'created_at', 'category', 'description']
+        fields = ['id', 'product', 'quntity', 'in_stock', 'farmer', 'created_at', 'category', 'description', 'photo']
 
 class OrderSerializer(serializers.ModelSerializer):
     driver_username = serializers.CharField(source='driver.username', read_only=True, default=None)

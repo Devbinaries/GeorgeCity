@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import (
     FarmerViewSet, ConsumerViewSet, DriverViewSet,ConsumerSearchView,
     FarmerSearchView,DriverSearchView,LoginView,FarmerRegistrationView,ConsumerRegistrationView,
-    DriverRegistrationView, ProfileView
+    DriverRegistrationView, ProfileView, UserProfileView
 )
 
 app_name = 'users'
@@ -22,6 +22,7 @@ urlpatterns = [
     path('signin/',LoginView.as_view(), name='login'),
     path('login/',LoginView.as_view(), name='login-alias'),
     path('profile/', ProfileView.as_view(), name='profile'),
+    path('by-username/<str:username>/', UserProfileView.as_view(), name='user-by-username'),
     path('signup/farmer/',FarmerRegistrationView.as_view(), name='farmer'),
     path('signup/consumer/',ConsumerRegistrationView.as_view(),name='consumer'),
     path('signup/driver/',DriverRegistrationView.as_view(),name='driver'),

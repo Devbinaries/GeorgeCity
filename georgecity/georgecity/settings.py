@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-2+dv_mq+7-e+y^juvc48$hln#=5r8-=_)hcz=t14h)q7=z93(&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = [
+#     "127.0.0.1",
+#     "127.0.0.1:8000",
+#     "http://georgecity-server.onrender.com"
+# ]
 
 
 # Application definition
@@ -51,7 +55,10 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'users.BaseUser'
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://georgecity.onrender.com"
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
