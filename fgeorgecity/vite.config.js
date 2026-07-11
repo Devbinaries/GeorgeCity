@@ -13,5 +13,16 @@ export default defineConfig({
         ws: true,
       }
     }
-  }
+  },
+  output: {
+    codeSplitting: {
+      minSize: 20000,
+      groups: [
+        {
+          name: 'vendor',
+          test: /node_modules/,
+        },
+      ],
+    },
+  },
 })
