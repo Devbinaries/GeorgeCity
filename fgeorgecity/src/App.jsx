@@ -11,10 +11,10 @@ import SignIn from './pages/SignIn'
 import ConsumerSignUp from './pages/Consumer/ConsumerSignUp'
 import DriverSignUp from './pages/Logistics/DriverSignUp'
 import FarmerSignUp from './pages/Farmer/FarmerSignUp'
-import FarmerDashboard from "./pages/farmer/FarmerDashboard"
-import FarmerProfile from "./pages/Farmer/FarmerProfile"
+import FarmerDashboard from './pages/farmer/FarmerDashboard'
+import FarmerProfile from './pages/Farmer/FarmerProfile'
 import FarmerListings from './pages/Farmer/Listings'
-import ConsumerProfile from "./pages/Consumer/ConsumerProfile"
+import ConsumerProfile from './pages/Consumer/ConsumerProfile'
 import ConsumerDashboard from './pages/Consumer/ConsumerDashboard'
 import CreateProduct from './pages/Products/CreateProduct'
 import ProductListing from './pages/Products/ProductListing'
