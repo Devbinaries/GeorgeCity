@@ -6,13 +6,6 @@ import * as Yup from 'yup'
 import Logo from '../components/Logo'
 import  {useAuth}   from '../hooks/useAuth'
 
-// export function useAuth() {
-//   const context = useContext(AuthContext);
-//   if (!context) {
-//     throw new Error('useAuth must be used within an <AuthProvider>');
-//   }
-//   return context;
-// }
 
 export default function SignIn() {
   const navigate = useNavigate()
@@ -44,6 +37,7 @@ export default function SignIn() {
         lastName: data.last_name,
         photo: data.photo,
         userType: data.user_type,
+        user_type: data.user_type,
       }
 
       login(
@@ -54,13 +48,7 @@ export default function SignIn() {
       queryClient.invalidateQueries({ queryKey: ['profile'] })
       
       // Route to appropriate dashboard
-      if (data.user_type === 'farmer') {
-        navigate('/dashboard/farmer')
-      } else if (data.user_type === 'driver') {
-        navigate('/dashboard/driver')
-      } else {
-        navigate('/dashboard/consumer')
-      }
+      navigate('/')
     },
     onError: () => {
       setLoginError('Invalid username or password')

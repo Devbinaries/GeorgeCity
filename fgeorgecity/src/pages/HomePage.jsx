@@ -1,12 +1,39 @@
 import {Link} from "react-router-dom"
 import {motion} from 'motion/react'
+import {useQuery} from "@tanstack/react-query"
 
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import FarmerDashbord from "./Farmer/FarmerDashboard"
+import ConsumerDashboard from "./Consumer/ConsumerDashboard"
+import DriverDashboard from "./Logistics/DriverDashboard"
 
+import {useAuth} from "../hooks/useAuth"
 
+export default function HomePage() {
+    const { user, isAuthenticated, loading } = useAuth()
 
-export default function LandingPage() {
+    if (loading) {
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-indigo-100">
+                <p className="text-lg font-semibold text-indigo-900">Loading...</p>
+            </div>
+        )
+    }
+
+    if (isAuthenticated && user) {
+        const role = user.userType || user.user_type
+        if (role === 'farmer') {
+            return <FarmerDashbord />
+        }
+        if (role === 'consumer') {
+            return <ConsumerDashboard />
+        }
+        if (role === 'driver') {
+            return <DriverDashboard />
+        }
+    }
+    
     return (
         <div className="flex flex-col min-h-screen">
             <Header />
@@ -29,10 +56,9 @@ export default function LandingPage() {
                         </Link>
                     </div>
                 </motion.div>
-               
+            
             </main>
             <Footer />
-        </div>
-        
+        </div>    
     )
 }

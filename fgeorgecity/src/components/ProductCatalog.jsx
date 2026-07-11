@@ -41,6 +41,8 @@ function ProductCard({ product, variant, cardActionLabel, cardActionTo }) {
     const categoryKey = (product.category ?? 'uncategorized').toLowerCase()
     const categoryStyle = CATEGORY_STYLES[categoryKey] ?? CATEGORY_STYLES.uncategorized
     const isFarmerView = variant === 'farmer'
+    const targetTo = isFarmerView ? cardActionTo : `/products/${product.id}`
+    const actionLabel = isFarmerView ? cardActionLabel : 'View product'
 
     return (
         <article className="group flex h-full flex-col justify-between rounded-3xl border border-white/70 bg-white p-5 shadow-[0_18px_40px_rgba(15,23,42,0.08)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_24px_50px_rgba(15,23,42,0.12)]">
@@ -50,13 +52,25 @@ function ProductCard({ product, variant, cardActionLabel, cardActionTo }) {
                         <span className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] ${categoryStyle}`}>
                             {product.category}
                         </span>
-                        <h3 className="mt-4 text-xl font-bold text-slate-900">{product.name}</h3>
+                        {isFarmerView ? (
+                            <h3 className="mt-4 text-xl font-bold text-slate-900">{product.name}</h3>
+                        ) : (
+                            <Link to={targetTo}>
+                                <h3 className="mt-4 text-xl font-bold text-slate-900 hover:text-emerald-600 transition-colors">{product.name}</h3>
+                            </Link>
+                        )}
                         <p className="mt-2 text-sm leading-6 text-slate-600">{product.description}</p>
                     </div>
 
-                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-lime-400 text-lg font-black text-white shadow-lg shadow-emerald-500/20">
-                        {product.name.slice(0, 1).toUpperCase()}
-                    </div>
+                    {isFarmerView ? (
+                        <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-lime-400 text-lg font-black text-white shadow-lg shadow-emerald-500/20">
+                            {product.name.slice(0, 1).toUpperCase()}
+                        </div>
+                    ) : (
+                        <Link to={targetTo} className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-lime-400 text-lg font-black text-white shadow-lg shadow-emerald-500/20 hover:opacity-90 transition-opacity">
+                            {product.name.slice(0, 1).toUpperCase()}
+                        </Link>
+                    )}
                 </div>
 
                 <div className="mt-5 flex flex-wrap gap-2 text-xs font-medium text-slate-600">
@@ -70,15 +84,15 @@ function ProductCard({ product, variant, cardActionLabel, cardActionTo }) {
 
             <div className="mt-6 flex items-center justify-between gap-3 border-t border-slate-100 pt-4">
                 <p className="text-xs text-slate-500">
-                    {isFarmerView ? 'Keep the catalog current for buyers.' : 'Request an order or message the farmer.'}
+                    {isFarmerView ? 'Keep the catalog current for buyers.' : 'Request an order or view details.'}
                 </p>
 
-                {cardActionLabel && cardActionTo && (
+                {actionLabel && targetTo && (
                     <Link
-                        to={cardActionTo}
+                        to={targetTo}
                         className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-emerald-600"
                     >
-                        {cardActionLabel}
+                        {actionLabel}
                         <ArrowRight size={14} />
                     </Link>
                 )}

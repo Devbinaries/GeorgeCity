@@ -1,7 +1,7 @@
 import { useState } from "react"
 import {useQuery} from '@tanstack/react-query'
 import {Link, useParams} from "react-router-dom"
-import {UserRound,CirclePoundSterling,Settings, FileText} from "lucide-react"
+import {UserRound,CirclePoundSterling,Settings, FileText, Wallet} from "lucide-react"
 
 import Header from "../../components/Header"
 import CreateProduct from '../Products/CreateProduct'
@@ -41,36 +41,27 @@ export default function Profile(){
                                 <p className="bg-green-500 rounded-full h-10 w-auto p-2 text-white text-center"> F A R M E R</p>
                             </div>
                         </div>
-                        <div className="mt-8 bg-white">
-                            <nav className="flex gap-4">
-                                <div>Bio</div> 
-                                <div> My Listings</div>
-                                <div> Posts </div>
-
-                            </nav>
-                            <div className="mt-4 p-4">
-                                <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam tincidunt, nunc nisl aliquam nisl, eget aliquam nunc nisl eget nunc.</p>
-                            </div>
-                            <div>
-                                <Link to="/farmer/listings/create" element={<CreateProduct />} className="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">Create Product</Link>
-                            </div>
-                            <div>
-                                Posts
-                            </div>
-                            </div>
+                        
+                            
                             <div className ='flex flex-wrap gap-4 mx-4 my-2'>
-                                <div className='p-4 bg-white rounded-lg shadow-md w-50 h-50 mt-4 flex flex-col items-center justify-center gap-2'>
-                                    <div className="rounded-full flex w-30 h-30 bg-green-200 p-auto justify-center items-center"><CirclePoundSterling size={80} color="green" /></div>
-                                    <p className="text-green-700 font-semibold text-lg">Wallet</p>
-                                </div>
-                                <div className='p-4 bg-white rounded-lg shadow-md w-50 h-50 mt-4 flex flex-col items-center justify-center gap-2'>
-                                    <div className="rounded-full flex w-30 h-30 bg-blue-200 p-auto justify-center items-center"><Settings size={80} color="blue" /></div>
-                                    <p className="text-blue-700 font-semibold text-lg">Settings</p>
-                                </div>
-                                <div className='p-4 bg-white rounded-lg shadow-md w-50 h-50 mt-4 flex flex-col items-center justify-center gap-2'>
-                                    <div className="rounded-full flex w-30 h-30 bg-amber-200 p-auto justify-center items-center"><FileText size={80} color="#b45309" /></div>
-                                    <p className="text-amber-700 font-semibold text-lg">My Listings</p>
-                                </div>
+                                <Link to="/wallet" element={<Wallet />} >
+                                    <div className='p-4 bg-white rounded-lg shadow-md w-50 h-50 mt-4 flex flex-col items-center justify-center gap-2'>
+                                        <div className="rounded-full flex w-30 h-30 bg-green-200 p-auto justify-center items-center"><CirclePoundSterling size={80} color="green" /></div>
+                                        <p className="text-green-700 font-semibold text-lg">Wallet</p>
+                                    </div>
+                                </Link>
+                                <Link to="/settings" element={<Settings />} >
+                                    <div className='p-4 bg-white rounded-lg shadow-md w-50 h-50 mt-4 flex flex-col items-center justify-center gap-2'>
+                                        <div className="rounded-full flex w-30 h-30 bg-blue-200 p-auto justify-center items-center"><Settings size={80} color="blue" /></div>
+                                        <p className="text-blue-700 font-semibold text-lg">Settings</p>
+                                    </div>
+                                </Link>
+                                <Link to="/listings" element={<Listings />} >
+                                    <div className='p-4 bg-white rounded-lg shadow-md w-50 h-50 mt-4 flex flex-col items-center justify-center gap-2'>
+                                        <div className="rounded-full flex w-30 h-30 bg-amber-200 p-auto justify-center items-center"><FileText size={80} color="#b45309" /></div>
+                                        <p className="text-amber-700 font-semibold text-lg">My Listings</p>
+                                    </div>
+                                </Link>
                             </div>
                         
                     </main>

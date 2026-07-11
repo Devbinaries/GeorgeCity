@@ -21,7 +21,7 @@ export default function Header() {
   const userName = user?.firstName || user?.first_name || user?.username || 'User'
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-white px-4 py-3 shadow-sm">
+    <header className="fixed top-0  w-full bg-white px-4 py-3 ">
       <div className="flex items-center justify-between">
         <div className="flex-shrink-0">
           <Logo />
@@ -42,14 +42,21 @@ export default function Header() {
             {showMenu && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50">
                 <Link
-                  to={`/profile/${user?.userType || user?.user_type || 'consumer'}/${user?.username}`}
+                  to={`/${user?.username}`}
                   onClick={() => setShowMenu(false)}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                 >
                   Profile
                 </Link>
                 <Link
-                  to={`/dashboard/${user?.userType || user?.user_type || 'consumer'}`}
+                  to="/settings"
+                  onClick={() => setShowMenu(false)}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  Settings
+                </Link>
+                <Link
+                  to="/"
                   onClick={() => setShowMenu(false)}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                 >

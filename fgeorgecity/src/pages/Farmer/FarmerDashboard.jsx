@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import {House, ShoppingCart, MessageSquare, FileUser, PlusCircle} from 'lucide-react'
+import {House, ShoppingCart, MessageSquare, FileUser} from 'lucide-react'
 import Header from '../../components/Header'
-import ProductListing from '../Products/ProductListing'
 import Messages from './../Messages'
 import HireTab from './HireTab'
 import ListingsTab from './ListingsTab'
+import FeedTab from './FeedTab'
 import { fetchProfile } from '../../api/login'
 
 
@@ -25,18 +25,7 @@ export default function FarmerDashbord(){
             case 'feed':
                 return (
                     <div className='p-4 h-auto' data-feed='feed' id="feed">
-                        <h1 className='text-2xl font-bold text-gray-800'>My Feed</h1>
-                        <p className='text-gray-600'>Keep an eye on your listings, orders, and recent activity.</p>
-                        <div className='mt-4 flex flex-wrap gap-3'>
-                            <button onClick={() => setActiveTab('listings')} className='inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700'>
-                                <ShoppingCart size={16} />
-                                View listings
-                            </button>
-                            <button onClick={() => setActiveTab('listings')} className='inline-flex items-center gap-2 rounded-lg border border-emerald-600 px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50'>
-                                <PlusCircle size={16} />
-                                Create listing
-                            </button>
-                        </div>
+                        <FeedTab />
                     </div>
                 )
             case 'listings':
@@ -77,12 +66,12 @@ export default function FarmerDashbord(){
           <Header />
           <main className="flex pt-16">
                  <div className="flex flex-col ">
-                    <div className="w-full">
+                    <div className="w-full mt-4">
                         <nav className="bg-white p-4 rounded-lg shadow-md fixed top-16 left-0 right-0 z-40 flex justify-between items-center w-full">
-                            <button className='flex flex-col' onClick={() => setActiveTab("feed")}><House />My Feed</button>
-                            <button className="flex flex-col" onClick={() => setActiveTab("listings")}><ShoppingCart />Listings</button>
-                            <button className="flex flex-col" onClick={() => setActiveTab("hire")}><FileUser />Hire</button>
-                            <button className="flex flex-col py-4" onClick={() => setActiveTab("messages")}><MessageSquare />Messages</button>
+                            <button className='flex flex-row gap-1' onClick={() => setActiveTab("feed")}><House />My Feed</button>
+                            <button className="flex flex-row gap-1" onClick={() => setActiveTab("listings")}><ShoppingCart />Listings</button>
+                            <button className="flex flex-row gap-1" onClick={() => setActiveTab("hire")}><FileUser />Hire</button>
+                            <button className="flex flex-row gap-1" onClick={() => setActiveTab("messages")}><MessageSquare />Messages</button>
                         </nav>
                     </div>
                     <div className="p-4 bg-white rounded-t-lg mt-36  mx-4 my-4 h-full w-full"> 

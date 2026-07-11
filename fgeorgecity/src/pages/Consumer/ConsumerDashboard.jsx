@@ -78,7 +78,7 @@ export default function ConsumerDashbord(){
                         <button className="flex flex-row py-4" onClick={() => setActiveTab("messages")}><MessageSquare />Messages</button>
                     </nav>
                 </div>
-                <div className="p-4 bg-white rounded-t-lg mt-32 h-auto w-full mx-8 my-8 h-full"> 
+                <div className="container mx-4 p-4 bg-white rounded-t-lg mt-32 h-auto w-full   h-full overflow-hidden"> 
                     {renderContent()}
                 </div>           
           </main>

@@ -189,7 +189,7 @@ export default function PaymentStatus() {
                             <RotateCcw size={16} /> Try Again
                         </button>
                     )}
-                    <Link to="/dashboard/consumer" className="ps-btn ps-btn-secondary">
+                    <Link to="/" className="ps-btn ps-btn-secondary">
                         <Home size={16} /> Dashboard
                     </Link>
                 </div>
