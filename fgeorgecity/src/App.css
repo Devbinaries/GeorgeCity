@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+.landing-bg{
+    background-image: url('./assets/landingpage/farmbackground.png');
+    background-size: cover;
+    background-position: center;
+}
