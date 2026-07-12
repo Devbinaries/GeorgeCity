@@ -2,6 +2,7 @@
 ## A social media platform that connects farmers to buyers
 
 https://georgecity.onrender.com
+
 https://georgecity-server.onrender.com
 
 ### Getting started
@@ -21,12 +22,12 @@ https://georgecity-server.onrender.com
     python -m venv virtualenv
     ```
 - Activate the virtual environment
-    *** On Windows ***
+    ***On Windows***
     ``` python
     virtualenv\Scripts\activate
     ```
   
-    *** On Linux/Mac ***
+    ***On Linux/Mac***
      ``` python
     src/bin/acitvate
     ```
