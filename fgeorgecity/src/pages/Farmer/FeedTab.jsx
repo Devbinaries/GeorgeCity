@@ -298,7 +298,6 @@ function CreatePostForm({ farmerId, authorUsername, onCreated }) {
         try {
             const formData = new FormData()
             formData.append('post', trimmed)
-            formData.append('author', farmerId)
             if (mediaFile) formData.append('media', mediaFile)
 
             const res = await fetch(POSTS_API, {

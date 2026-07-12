@@ -203,7 +203,7 @@ export default function Messages() {
     // ── Render ────────────────────────────────────────────────────────────────
 
     return (
-        <main className="mx-auto flex mt-32 w-full max-w-7xl items-stretch px-4 pb-8 pt-0 sm:px-6 lg:px-8">
+        <main className="mx-auto  flex mt-32 w-full max-w-7xl items-stretch px-4 pb-8 pt-0 sm:px-6 lg:px-8">
             <div className="mt-16 w-full p-4 md:p-8">
                 <section className="grid w-full gap-6 lg:grid-cols-[320px_minmax(0,1fr)]" style={{ minHeight: '75vh' }}>
 

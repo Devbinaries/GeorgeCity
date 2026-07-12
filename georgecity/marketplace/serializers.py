@@ -51,11 +51,31 @@ class PostsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Posts
         fields = ['id', 'post', 'media', 'author', 'author_username', 'created_at']
+        extra_kwargs = {
+            'author': {'read_only': True},
+            'media': {'required': False, 'allow_null': True},
+        }
 
     def create(self, validated_data):
-        if self.context['request'].user != validated_data['author']:
-            raise serializers.ValidationError("You can only create posts for yourself.")
+        request = self.context.get('request')
+        if not request or not request.user or not request.user.is_authenticated:
+            raise serializers.ValidationError("You must be logged in to create a post.")
+
+        try:
+            author = request.user.farmer
+        except AttributeError as error:
+            raise serializers.ValidationError("Only farmers can create posts.") from error
+
+        validated_data['author'] = author
         return Posts.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        # Only allow editing the post text and media; author is immutable
+        instance.post = validated_data.get('post', instance.post)
+        if 'media' in validated_data:
+            instance.media = validated_data['media']
+        instance.save()
+        return instance
     
 class PostsEngagementSerializer(HyperlinkedModelSerializer):
     class Meta:
