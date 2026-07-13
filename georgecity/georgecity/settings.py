@@ -27,11 +27,9 @@ SECRET_KEY = 'django-insecure-2+dv_mq+7-e+y^juvc48$hln#=5r8-=_)hcz=t14h)q7=z93(&
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "0.0.0.0",
-    "127.0.0.1",
-    "127.0.0.1:8000",
     "http://georgecity-server.onrender.com",
-    "georgecity.onrender.com",
+    "0.0.0.0",
+    "127.0.0.1"
 ]
 
 
