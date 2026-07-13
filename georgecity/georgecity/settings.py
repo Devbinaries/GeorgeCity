@@ -200,3 +200,6 @@ SESSION_COOKIE_HTTP_ONLY = True
 
 CSRF_COOKIE_HTTP_ONLY = True
 CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = [
+    "https://georgecity.onrender.com",
+]
