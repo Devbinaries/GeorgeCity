@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     "0.0.0.0"
     "127.0.0.1",
     "127.0.0.1:8000",
-    "http://georgecity-server.onrender.com"
+    "https://georgecity-server.onrender.com"
 ]
 
 
