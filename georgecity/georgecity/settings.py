@@ -93,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'georgecity.wsgi.application'
+# WSGI_APPLICATION = 'georgecity.wsgi.application'
 
 ASGI_APPLICATION = 'georgecity.asgi.application'
 
