@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'channels',
+    'whitenoise',
     'corsheaders',
     'users',
     'payments',
@@ -57,7 +58,8 @@ AUTH_USER_MODEL = 'users.BaseUser'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://georgecity.onrender.com"
+    "https://georgecity.onrender.com",
+    "georgecity.onrender.com"
     ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -73,6 +75,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'georgecity.urls'
@@ -203,3 +206,7 @@ CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = [
     "https://georgecity.onrender.com",
 ]
+
+STATICFILES_STORAGE = {
+    'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+}
