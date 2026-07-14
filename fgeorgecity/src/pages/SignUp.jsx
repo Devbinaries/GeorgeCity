@@ -4,6 +4,7 @@ import FarmerSignUp from './Farmer/FarmerSignUp'
 import ConsumerSignUp from './Consumer/ConsumerSignUp'
 import DriverSignUp from './Logistics/DriverSignUp'
 
+
 export default function SignUp(){
     return(
         <div className="flex flex-col min-h-screen">

@@ -3,6 +3,7 @@ import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 import { CheckCircle, XCircle, Clock, Home, RotateCcw, Receipt } from 'lucide-react';
 import { fetchTransactionStatus } from '../api/payments';
 
+
 const MAX_POLLS = 20;
 const POLL_INTERVAL_MS = 3000;
 

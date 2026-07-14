@@ -5,6 +5,7 @@ import FarmerProfile from "./Farmer/FarmerProfile"
 import ConsumerProfile from "./Consumer/ConsumerProfile"
 import DriverProfile from "./Logistics/DriverProfile"
 import Header from "../components/Header"
+import { VITE_API_URL } from "../api/api"
 
 export default function UserProfile() {
     const { username } = useParams()
@@ -17,7 +18,7 @@ export default function UserProfile() {
         queryFn: async () => {
             if (!targetUsername) return null
             const token = getAuthToken()
-            const response = await fetch(`/api/users/by-username/${targetUsername}/`, {
+            const response = await fetch(`${VITE_API_URL}/users/by-username/${targetUsername}/`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

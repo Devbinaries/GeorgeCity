@@ -2,8 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { MessageSquareText, Send, Users, Plus, ArrowLeft, Search } from 'lucide-react'
 import Header from '../components/Header'
 import { useAuth, getAuthToken } from '../hooks/useAuth'
+import {VITE_API_URL} from '../api/api'
 
-const CHAT_API = '/api/marketplace/chats/'
+const CHAT_API = `${VITE_API_URL}/marketplace/chats/`
 
 function buildRoomName(sender, receiver) {
     return [sender.trim(), receiver.trim()]

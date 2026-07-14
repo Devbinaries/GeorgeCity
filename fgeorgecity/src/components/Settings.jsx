@@ -3,6 +3,8 @@ import { useAuth } from '../hooks/useAuth';
 import { User, Shield, Briefcase, CheckCircle, AlertCircle, Loader } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
+import { VITE_API_URL } from '../api/api';
+
 
 export default function Settings() {
   const { user, updateUser, getAuthToken } = useAuth();
@@ -99,7 +101,7 @@ export default function Settings() {
     }
 
     try {
-      const response = await fetch('/api/users/profile/', {
+      const response = await fetch(`${VITE_API_URL}/users/profile/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -141,7 +143,7 @@ export default function Settings() {
 
     const token = getAuthToken();
     try {
-      const response = await fetch('/api/users/profile/', {
+      const response = await fetch(`${VITE_API_URL}/users/profile/`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

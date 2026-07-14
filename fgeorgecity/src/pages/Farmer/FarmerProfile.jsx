@@ -6,13 +6,14 @@ import {UserRound,CirclePoundSterling,Settings, FileText, Wallet} from "lucide-r
 import Header from "../../components/Header"
 import CreateProduct from '../Products/CreateProduct'
 import ProducListing from '../Products/ProductListing'
+import { VITE_API_URL } from '../../api/api'
 
 export default function Profile(){
     const { username } = useParams()
     const [signedIn, setSignedIn] = useState(true)
     const {error,data,isSignedIn}= useQuery({
         queryKey: ['farmer',username],
-        queryFn : () => fetch(`/api/users/farmers/${username}/`).then(resp => resp.json()),
+        queryFn : () => fetch(`${VITE_API_URL}/users/farmers/${username}/`).then(resp => resp.json()),
         enabled : !!username && signedIn
     });
     

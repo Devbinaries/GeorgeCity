@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { ArrowRight, Leaf, Search, Store, Tractor } from 'lucide-react'
+import {VITE_API_URL} from '../api/api'
 
 const CATEGORY_STYLES = {
     fruits: 'border-rose-100 bg-rose-50 text-rose-700',
@@ -14,7 +15,7 @@ const CATEGORY_STYLES = {
 }
 
 async function fetchProducts() {
-    const response = await fetch('/api/marketplace/products/')
+    const response = await fetch(`${VITE_API_URL}/marketplace/products/`)
 
     if (!response.ok) {
         throw new Error('Unable to load products right now.')

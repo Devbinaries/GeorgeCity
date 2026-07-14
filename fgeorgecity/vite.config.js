@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://georgecity-server.onrender.com',
+        target: 'https://georgecity-server.onrender.com/api',
         changeOrigin: true,
         ws: true,
       }

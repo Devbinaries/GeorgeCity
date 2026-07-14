@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import * as Yup from "yup"
 import Logo from "../../components/Logo"
+import { VITE_API_URL } from "../../api/api"
 
 export default function DriverSignUp() {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ export default function DriverSignUp() {
 
   const mutation = useMutation({
     mutationFn: (newDriver) => {
-      return fetch("/api/users/signup/driver/", {
+      return fetch(`${VITE_API_URL}/users/signup/driver/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

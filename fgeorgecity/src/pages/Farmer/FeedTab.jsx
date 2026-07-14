@@ -5,8 +5,9 @@ import {
     MoreVertical, MessageSquare, ChevronDown
 } from 'lucide-react'
 import { useAuth, getAuthToken } from '../../hooks/useAuth'
+import { VITE_API_URL } from '../../api/api'
 
-const POSTS_API = '/api/marketplace/posts/'
+const POSTS_API = `${VITE_API_URL}/api/marketplace/posts/`
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function timeAgo(dateStr) {

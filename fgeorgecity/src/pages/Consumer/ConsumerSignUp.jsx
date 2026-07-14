@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate, Link } from 'react-router-dom'
 import Logo from '../../components/Logo'
+import { VITE_API_URL } from '../../api/api'
 
 function ConsumerSignUp() {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ function ConsumerSignUp() {
 
   const mutation = useMutation({
     mutationFn: (newConsumer) => {
-      return fetch('/api/users/signup/consumer/', {
+      return fetch(`${VITE_API_URL}/users/signup/consumer/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

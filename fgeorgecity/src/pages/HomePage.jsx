@@ -1,6 +1,5 @@
 import {Link} from "react-router-dom"
 import {motion} from 'motion/react'
-import {useQuery} from "@tanstack/react-query"
 
 import Header from "../components/Header"
 import Footer from "../components/Footer"

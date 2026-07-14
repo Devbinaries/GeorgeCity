@@ -6,13 +6,14 @@ import {UserRound,CirclePoundSterling, Settings} from "lucide-react"
 
 import Header from "../../components/Header"
 import Feed from "./Feed"
+import { VITE_API_URL } from "../../api/api"
 
 export default function ConsumerProfile(){
     const { username } = useParams()
     const [signedIn, setSignedIn] = useState(true)
     const {error,data,isSignedIn} = useQuery({
         queryKey : ['Consumer',username],
-        queryFn : () => fetch(`/api/users/consumers/${username}/`).then(resp  => resp.json()),
+        queryFn : () => fetch(`${VITE_API_URL}/users/consumers/${username}/`).then(resp  => resp.json()),
         enabled : !!username && signedIn
     })
     
@@ -47,21 +48,6 @@ export default function ConsumerProfile(){
                                 </div>
                             ))}
                         </div>
-                        {/* <div className="mt-8 bg-white">
-                            <nav className="flex gap-4">
-                                <div>Bio</div> 
-                                <div> My Listings</div>
-                                <div> Posts </div>
-
-                            </nav>
-                            <div className="mt-4 p-4">
-                                <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam tincidunt, nunc nisl aliquam nisl, eget aliquam nunc nisl eget nunc.</p>
-                            </div>
-                            <div>
-                                <Link to="products/create/" element={<CreateProduct />} className="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">Create Product</Link>
-                            </div>
-                            
-                        </div> */}
                         <div className ='flex flex-wrap gap-4 mx-4 my-2'>
                             <div className='p-4 bg-white rounded-lg shadow-md w-50 h-50 mt-4 flex flex-col items-center justify-center gap-2'>
                                 <div className="rounded-full flex w-30 h-30 bg-green-200 p-auto justify-center items-center"><CirclePoundSterling size={80} color="green" /></div>

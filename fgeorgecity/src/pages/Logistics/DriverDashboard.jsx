@@ -5,6 +5,7 @@ import OrderMapTracker from '../../components/OrderMapTracker';
 import { fetchProfile } from '../../api/login';
 import {getAuthToken}  from '../../hooks/useAuth';
 import HireRequestsTab from './HireRequestsTab';
+import { VITE_API_URL } from '../../api/api';
 
 export default function DriverDashboard() {
   const [activeTab, setActiveTab] = useState('orders'); // 'orders' (deliveries), 'active', 'hire', 'profile'
@@ -43,7 +44,7 @@ export default function DriverDashboard() {
     const token = getAuthToken();
     if (!token) return;
     try {
-      const res = await fetch('/api/marketplace/hire-requests/?role=driver', {
+      const res = await fetch(`${VITE_API_URL}/marketplace/hire-requests/?role=driver`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -62,13 +63,13 @@ export default function DriverDashboard() {
 
     try {
       // Fetch available/pending orders (driver=null, status=PENDING)
-      const availableRes = await fetch('/api/marketplace/orders/?driver=null&status=PENDING', {
+      const availableRes = await fetch(`${VITE_API_URL}/marketplace/orders/?driver=null&status=PENDING`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const availableData = await availableRes.json();
 
       // Fetch active orders for this driver (driver=me)
-      const myRes = await fetch('/api/marketplace/orders/?driver=me', {
+      const myRes = await fetch(`${VITE_API_URL}/marketplace/orders/?driver=me`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const myData = await myRes.json();
@@ -97,7 +98,7 @@ export default function DriverDashboard() {
   const handleAcceptOrder = async (orderId) => {
     const token = getAuthToken();
     try {
-      const response = await fetch(`/api/marketplace/orders/${orderId}/accept_order/`, {
+      const response = await fetch(`${VITE_API_URL}/marketplace/orders/${orderId}/accept_order/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -121,7 +122,7 @@ export default function DriverDashboard() {
   const handleUpdateStatus = async (orderId, actionType) => {
     const token = getAuthToken();
     try {
-      const response = await fetch(`/api/marketplace/orders/${orderId}/${actionType}_order/`, {
+      const response = await fetch(`${VITE_API_URL}/marketplace/orders/${orderId}/${actionType}_order/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

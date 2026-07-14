@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import * as Yup from "yup"
 import Logo from "../../components/Logo"
+import { VITE_API_URL } from "../../api/api"
 
 export default function FarmerSignUp() {
   const navigate = useNavigate()
@@ -11,7 +12,7 @@ export default function FarmerSignUp() {
 
   const mutation = useMutation({
     mutationFn: (newFarmer) => {
-      return fetch('/api/users/signup/farmer/', {
+      return fetch(`${VITE_API_URL}/users/signup/farmer/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -5,6 +5,7 @@ import { useState } from 'react'
 import * as Yup from 'yup'
 import Logo from '../components/Logo'
 import  {useAuth}   from '../hooks/useAuth'
+import {VITE_API_URL} from '../api/api'
 
 
 export default function SignIn() {
@@ -14,7 +15,7 @@ export default function SignIn() {
   const [loginError, setLoginError] = useState('')
 
   async function loginUser({ username, password }) {
-    const response = await fetch('/api/users/signin/', {
+    const response = await fetch(`${VITE_API_URL}/users/signin/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

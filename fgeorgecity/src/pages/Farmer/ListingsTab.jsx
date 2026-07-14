@@ -5,6 +5,7 @@ import {
   BarChart3, ShoppingBag, Archive
 } from 'lucide-react';
 import { getAuthToken, useAuth } from '../../hooks/useAuth';
+import { VITE_API_URL } from '../../api/api';
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -181,8 +182,8 @@ function ProductFormModal({ open, onClose, onSave, editProduct }) {
       };
 
       const url = editProduct
-        ? `/api/marketplace/products/${editProduct.id}/`
-        : '/api/marketplace/products/';
+        ? `${VITE_API_URL}/marketplace/products/${editProduct.id}/`
+        : `${VITE_API_URL}/api/marketplace/products/`;
       const method = editProduct ? 'PATCH' : 'POST';
 
       const res = await fetch(url, {

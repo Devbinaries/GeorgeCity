@@ -4,6 +4,7 @@ import {
   User, AlertCircle, MessageSquare, RefreshCw
 } from 'lucide-react';
 import { getAuthToken } from '../../hooks/useAuth';
+import { VITE_API_URL } from '../../api/api';
 
 const STATUS_CONFIG = {
   PENDING: {
@@ -60,7 +61,7 @@ export default function HireRequestsTab() {
   const fetchRequests = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/marketplace/hire-requests/?role=driver', {
+      const res = await fetch(`${VITE_API_URL}/marketplace/hire-requests/?role=driver`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -80,7 +81,7 @@ export default function HireRequestsTab() {
   const handleAction = async (requestId, action) => {
     setActing(requestId);
     try {
-      const res = await fetch(`/api/marketplace/hire-requests/${requestId}/${action}/`, {
+      const res = await fetch(`${VITE_API_URL}/marketplace/hire-requests/${requestId}/${action}/`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

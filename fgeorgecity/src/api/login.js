@@ -1,11 +1,12 @@
 import {getAuthToken}  from '../hooks/useAuth';
+import {VITE_API_URL} from './api';
 
 
 export async function fetchProfile() {
     const token = getAuthToken();
     if (!token) return null;
 
-    const profile = await fetch("/api/users/profile/", {
+    const profile = await fetch(`${VITE_API_URL}/users/profile/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -18,7 +19,7 @@ export async function fetchProfile() {
 //refresh token
 export async function refreshToken() {
     const refresh = localStorage.getItem("_auth_refresh");
-    const response = await fetch("/api/token/refresh/", {
+    const response = await fetch(`${VITE_API_URL}/token/refresh/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
